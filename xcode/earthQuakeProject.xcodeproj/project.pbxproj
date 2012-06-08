@@ -26,7 +26,8 @@
 		4056A33015322D9F0060CA99 /* VOpenNIUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4056A32C15322D9F0060CA99 /* VOpenNIUser.cpp */; };
 		40572CCD154E4828009E6FB8 /* 华文黑体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40572CCC154E4828009E6FB8 /* 华文黑体.ttf */; };
 		4066FA83158246DE00CB0856 /* mysql_connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4066FA82158246DE00CB0856 /* mysql_connector.cpp */; };
-		4066FA8A1582475600CB0856 /* cppconn in Resources */ = {isa = PBXBuildFile; fileRef = 4066FA871582475600CB0856 /* cppconn */; };
+		4066FA8D158248C600CB0856 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 4066FA8B158248C600CB0856 /* include */; };
+		4066FA8E158248C600CB0856 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = 4066FA8C158248C600CB0856 /* lib */; };
 		406C68071548F4BF008075EF /* kinectMotor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 406C68061548F4BF008075EF /* kinectMotor.cpp */; };
 		406F887A150DB0E500B09564 /* Hei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 406F8879150DB0E500B09564 /* Hei.ttf */; };
 		407851EE154E1D3D00B526CC /* bg.mov in Resources */ = {isa = PBXBuildFile; fileRef = 407851ED154E1D3D00B526CC /* bg.mov */; };
@@ -125,9 +126,8 @@
 		4056A32C15322D9F0060CA99 /* VOpenNIUser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VOpenNIUser.cpp; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/src/VOpenNIUser.cpp"; sourceTree = "<group>"; };
 		40572CCC154E4828009E6FB8 /* 华文黑体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "华文黑体.ttf"; path = "../resources/华文黑体.ttf"; sourceTree = "<group>"; };
 		4066FA82158246DE00CB0856 /* mysql_connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mysql_connector.cpp; path = ../src/mysql_connector.cpp; sourceTree = "<group>"; };
-		4066FA871582475600CB0856 /* cppconn */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cppconn; path = mysql_connector_cpp_osx/cppconn; sourceTree = "<group>"; };
-		4066FA881582475600CB0856 /* mysql_connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mysql_connection.h; path = mysql_connector_cpp_osx/mysql_connection.h; sourceTree = "<group>"; };
-		4066FA891582475600CB0856 /* mysql_driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mysql_driver.h; path = mysql_connector_cpp_osx/mysql_driver.h; sourceTree = "<group>"; };
+		4066FA8B158248C600CB0856 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
+		4066FA8C158248C600CB0856 /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
 		406C68061548F4BF008075EF /* kinectMotor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = kinectMotor.cpp; path = ../src/kinectMotor.cpp; sourceTree = "<group>"; };
 		406C68091548F524008075EF /* kinectMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kinectMotor.h; path = ../include/kinectMotor.h; sourceTree = "<group>"; };
 		406F8879150DB0E500B09564 /* Hei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Hei.ttf; path = ../resources/Hei.ttf; sourceTree = "<group>"; };
@@ -472,9 +472,8 @@
 		4066FA841582470500CB0856 /* mysql_connector */ = {
 			isa = PBXGroup;
 			children = (
-				4066FA871582475600CB0856 /* cppconn */,
-				4066FA881582475600CB0856 /* mysql_connection.h */,
-				4066FA891582475600CB0856 /* mysql_driver.h */,
+				4066FA8B158248C600CB0856 /* include */,
+				4066FA8C158248C600CB0856 /* lib */,
 			);
 			name = mysql_connector;
 			sourceTree = "<group>";
@@ -536,7 +535,8 @@
 				4056A32815322D910060CA99 /* include in Resources */,
 				407851EE154E1D3D00B526CC /* bg.mov in Resources */,
 				40572CCD154E4828009E6FB8 /* 华文黑体.ttf in Resources */,
-				4066FA8A1582475600CB0856 /* cppconn in Resources */,
+				4066FA8D158248C600CB0856 /* include in Resources */,
+				4066FA8E158248C600CB0856 /* lib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +580,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(CINDER_PATH)/boost\"",
 					"\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include/OpenNI\"",
+					"\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include/\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -587,6 +588,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../blocks/Cinder-OpenCV/lib/macosx\"",
 					"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib",
+					"\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/lib",
 				);
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
@@ -596,7 +598,7 @@
 				);
 				PRODUCT_NAME = earthQuakeProject;
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -618,6 +620,7 @@
 				HEADER_SEARCH_PATHS = (
 					"\"$(CINDER_PATH)/boost\"",
 					"\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include/OpenNI\"",
+					"\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include/\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
@@ -625,6 +628,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../blocks/Cinder-OpenCV/lib/macosx\"",
 					"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib",
+					"\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/lib",
 				);
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
@@ -635,7 +639,7 @@
 				PRODUCT_NAME = earthQuakeProject;
 				SDKROOT = macosx10.6;
 				STRIP_INSTALLED_PRODUCT = YES;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -653,11 +657,11 @@
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				LIBRARY_SEARCH_PATHS = (
 					"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib",
-					"$(CINDER_PATH)/lib/mysql_connector_cpp_osx/",
+					"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include/mysql_connector_cpp_osx\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 			};
 			name = Debug;
 		};
@@ -674,11 +678,11 @@
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
 				LIBRARY_SEARCH_PATHS = (
 					"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib",
-					"$(CINDER_PATH)/lib/mysql_connector_cpp_osx/",
+					"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include/mysql_connector_cpp_osx\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 			};
 			name = Release;
 		};
