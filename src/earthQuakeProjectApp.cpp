@@ -24,6 +24,7 @@
 #include "nameController.h"
 
 //#include "nameParticle.h"
+#include "mysql_connector.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -91,6 +92,7 @@ class earthQuakeProjectApp : public AppBasic {
     //PARAMS
     params::InterfaceGl mParams;
     
+    mysql_connector mc;
    
     
 };

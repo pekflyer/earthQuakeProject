@@ -597,7 +597,7 @@
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
 				);
 				PRODUCT_NAME = earthQuakeProject;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -637,7 +637,7 @@
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
 				);
 				PRODUCT_NAME = earthQuakeProject;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = YES;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\"";
 				WRAPPER_EXTENSION = app;
@@ -660,7 +660,7 @@
 					"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 			};
 			name = Debug;
@@ -681,7 +681,7 @@
 					"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/mysql_connector_cpp_osx/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 			};
 			name = Release;
