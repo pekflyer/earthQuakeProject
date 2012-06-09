@@ -17,14 +17,13 @@
 
 #include <iostream>
 #include <boost/thread.hpp>
-
+#include "mysql_connector.h"
 
 //#include "particleController.h"
 #include "cinder/Camera.h"
 #include "nameController.h"
 
 //#include "nameParticle.h"
-#include "mysql_connector.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -92,7 +91,7 @@ class earthQuakeProjectApp : public AppBasic {
     //PARAMS
     params::InterfaceGl mParams;
     
-    mysql_connector mc;
+
    
     
 };
@@ -110,6 +109,8 @@ void earthQuakeProjectApp::prepareSettings( Settings *settings )
 void earthQuakeProjectApp::setup()
 {
     Rand::randomize();
+    mysql_connector mc;
+    mc.mysql_connect();
     //
     //boost::thread t(nameController);
     flatten         = false;

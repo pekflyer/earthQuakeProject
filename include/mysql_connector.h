@@ -8,7 +8,7 @@
 
 #ifndef earthQuakeProject_mysql_connector_h
 #define earthQuakeProject_mysql_connector_h
-
+//#include <mysql.h> 
 #include "mysql_driver.h"
 #include "mysql_connection.h"
 #include <cppconn/exception.h>
@@ -21,7 +21,11 @@ class mysql_connector
 public:
     mysql_connector();
     
-
+    int mysql_connect();
+    ::sql::Driver *driver;
+    ::sql::Connection *con;
+    ::sql::Statement *stmt;
+    ::sql::ResultSet *res;
 };
 
 #endif

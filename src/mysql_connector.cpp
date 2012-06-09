@@ -16,11 +16,28 @@ using namespace std;
 
 mysql_connector::mysql_connector()
 {
+    
+}
+
+//int mysql_connector::mysql_connect()
+//{
+//    mysql_init(&mysql);
+//    if(!mysql_real_connect(&mysql, "127.0.0.1", "root", "xiaofeng", "earthquake", 3306, NULL, 0))
+//       {}
+//       else
+//       {
+//       
+//       }
+//    return(0);
+//}
+
+int mysql_connector::mysql_connect()
+{
+    cout << endl;
+    cout << "Running 'SELECT 'Hello World!' AS _message'..." << endl;
+
     try {
-        ::sql::Driver *driver;
-        ::sql::Connection *con;
-        ::sql::Statement *stmt;
-        ::sql::ResultSet *res;
+
         driver = ::sql::mysql::get_driver_instance();
         con = driver->connect("tcp://127.0.0.1:3306", "root", "xiaofeng");
         con->setSchema("earthquake");
@@ -30,7 +47,7 @@ mysql_connector::mysql_connector()
         {
             cout << "\t... MySQL replies: ";
             /* Access column data by alias or column name */
-            cout << res->getString("gender") << endl;
+            cout << res->getString("name") << endl;
             cout << "\t... MySQL says it again: ";
             /* Access column fata by numeric offset, 1 is the first column */
             cout << res->getString(1) << endl;
@@ -50,5 +67,5 @@ mysql_connector::mysql_connector()
     }
     cout <<endl;
 
-    //return EXIT_SUCCESS;
+ return EXIT_SUCCESS;
 }

@@ -208,7 +208,7 @@ void nameParticle::draw(){
         gl::pushModelView();
         gl::pushMatrices();
     
-     
+        gl::color(ColorA(0.1f,1.0f,0.1f,1.0f));        
         gl::draw(gl::Texture(tempSur), Vec2f(mPos.x, mPos.y/-1));
         gl::popMatrices();
         gl::popModelView();
