@@ -15,18 +15,16 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00BAE65A0E7ED9C10018A608 /* earthQuakeProjectApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* earthQuakeProjectApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
+		40133D1C158AEB5200A80E87 /* SamplesConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D1B158AEB5200A80E87 /* SamplesConfig.xml */; };
+		40133D27158AFCAB00A80E87 /* haarcascade_fullbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D24158AFCAB00A80E87 /* haarcascade_fullbody.xml */; };
+		40133D28158AFCAB00A80E87 /* haarcascade_lowerbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D25158AFCAB00A80E87 /* haarcascade_lowerbody.xml */; };
+		40133D29158AFCAB00A80E87 /* haarcascade_upperbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D26158AFCAB00A80E87 /* haarcascade_upperbody.xml */; };
 		401DDF3C1512B1DA00490DE9 /* nameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 401DDF3B1512B1DA00490DE9 /* nameController.cpp */; };
 		401DDF3F1512B1EF00490DE9 /* cameraKinect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */; };
 		403FA021151818E100F81CE8 /* nameParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 403FA020151818E100F81CE8 /* nameParticle.cpp */; };
 		4056A324153228F70060CA99 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 4056A323153228F70060CA99 /* data */; };
-		4056A32815322D910060CA99 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 4056A32715322D910060CA99 /* include */; };
-		4056A32D15322D9F0060CA99 /* OpenNIRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4056A32915322D9F0060CA99 /* OpenNIRecorder.cpp */; };
-		4056A32E15322D9F0060CA99 /* VOpenNIDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4056A32A15322D9F0060CA99 /* VOpenNIDevice.cpp */; };
-		4056A32F15322D9F0060CA99 /* VOpenNIDeviceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4056A32B15322D9F0060CA99 /* VOpenNIDeviceManager.cpp */; };
-		4056A33015322D9F0060CA99 /* VOpenNIUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4056A32C15322D9F0060CA99 /* VOpenNIUser.cpp */; };
 		40572CCD154E4828009E6FB8 /* 华文黑体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40572CCC154E4828009E6FB8 /* 华文黑体.ttf */; };
 		4066FA83158246DE00CB0856 /* mysql_connector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4066FA82158246DE00CB0856 /* mysql_connector.cpp */; };
-		406C68071548F4BF008075EF /* kinectMotor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 406C68061548F4BF008075EF /* kinectMotor.cpp */; };
 		406F887A150DB0E500B09564 /* Hei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 406F8879150DB0E500B09564 /* Hei.ttf */; };
 		407851EE154E1D3D00B526CC /* bg.mov in Resources */ = {isa = PBXBuildFile; fileRef = 407851ED154E1D3D00B526CC /* bg.mov */; };
 		4086114115124529005955DD /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4086113F15124529005955DD /* particle.cpp */; };
@@ -54,6 +52,10 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* earthQuakeProject_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = earthQuakeProject_Prefix.pch; sourceTree = "<group>"; };
+		40133D1B158AEB5200A80E87 /* SamplesConfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SamplesConfig.xml; path = ../resources/SamplesConfig.xml; sourceTree = "<group>"; };
+		40133D24158AFCAB00A80E87 /* haarcascade_fullbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_fullbody.xml; path = ../resources/haarcascade_fullbody.xml; sourceTree = "<group>"; };
+		40133D25158AFCAB00A80E87 /* haarcascade_lowerbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_lowerbody.xml; path = ../resources/haarcascade_lowerbody.xml; sourceTree = "<group>"; };
+		40133D26158AFCAB00A80E87 /* haarcascade_upperbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_upperbody.xml; path = ../resources/haarcascade_upperbody.xml; sourceTree = "<group>"; };
 		401DDF3B1512B1DA00490DE9 /* nameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nameController.cpp; path = ../src/nameController.cpp; sourceTree = "<group>"; };
 		401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cameraKinect.cpp; path = ../src/cameraKinect.cpp; sourceTree = "<group>"; };
 		401DDF9B1512B24D00490DE9 /* CinderOpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderOpenCV.h; sourceTree = "<group>"; };
@@ -119,15 +121,8 @@
 		403FA020151818E100F81CE8 /* nameParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nameParticle.cpp; path = ../src/nameParticle.cpp; sourceTree = "<group>"; };
 		40439F14151572D500B4FDAD /* nameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nameController.h; path = ../include/nameController.h; sourceTree = "<group>"; };
 		4056A323153228F70060CA99 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/samples/BlockOpenNISample/data"; sourceTree = "<group>"; };
-		4056A32715322D910060CA99 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/include"; sourceTree = "<group>"; };
-		4056A32915322D9F0060CA99 /* OpenNIRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OpenNIRecorder.cpp; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/src/OpenNIRecorder.cpp"; sourceTree = "<group>"; };
-		4056A32A15322D9F0060CA99 /* VOpenNIDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VOpenNIDevice.cpp; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/src/VOpenNIDevice.cpp"; sourceTree = "<group>"; };
-		4056A32B15322D9F0060CA99 /* VOpenNIDeviceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VOpenNIDeviceManager.cpp; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/src/VOpenNIDeviceManager.cpp"; sourceTree = "<group>"; };
-		4056A32C15322D9F0060CA99 /* VOpenNIUser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VOpenNIUser.cpp; path = "../../blocks/chazmatazz-BlockOpenNI-d080920/src/VOpenNIUser.cpp"; sourceTree = "<group>"; };
 		40572CCC154E4828009E6FB8 /* 华文黑体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "华文黑体.ttf"; path = "../resources/华文黑体.ttf"; sourceTree = "<group>"; };
 		4066FA82158246DE00CB0856 /* mysql_connector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mysql_connector.cpp; path = ../src/mysql_connector.cpp; sourceTree = "<group>"; };
-		406C68061548F4BF008075EF /* kinectMotor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = kinectMotor.cpp; path = ../src/kinectMotor.cpp; sourceTree = "<group>"; };
-		406C68091548F524008075EF /* kinectMotor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kinectMotor.h; path = ../include/kinectMotor.h; sourceTree = "<group>"; };
 		406F8879150DB0E500B09564 /* Hei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Hei.ttf; path = ../resources/Hei.ttf; sourceTree = "<group>"; };
 		407851EB154E125900B526CC /* youyuan.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = youyuan.TTF; path = ../resources/youyuan.TTF; sourceTree = "<group>"; };
 		407851ED154E1D3D00B526CC /* bg.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = bg.mov; path = ../resources/bg.mov; sourceTree = "<group>"; };
@@ -173,12 +168,7 @@
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				4056A32915322D9F0060CA99 /* OpenNIRecorder.cpp */,
-				4056A32A15322D9F0060CA99 /* VOpenNIDevice.cpp */,
-				4056A32B15322D9F0060CA99 /* VOpenNIDeviceManager.cpp */,
-				4056A32C15322D9F0060CA99 /* VOpenNIUser.cpp */,
-				406C68061548F4BF008075EF /* kinectMotor.cpp */,
-				401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */,
+				40133D1A158ADE0100A80E87 /* OpenNI */,
 				4086113F15124529005955DD /* particle.cpp */,
 				4086114015124529005955DD /* particleController.cpp */,
 				00BAE6590E7ED9C10018A608 /* earthQuakeProjectApp.cpp */,
@@ -242,15 +232,13 @@
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				40F001F91582F80E0062C611 /* mysql_connector.h */,
 				408611431512453A005955DD /* particle.h */,
 				408611441512453A005955DD /* particleController.h */,
 				408611461512453A005955DD /* Resources.h */,
 				32CA4F630368D1EE00C91783 /* earthQuakeProject_Prefix.pch */,
-				401DE1C51512C0EE00490DE9 /* cameraKinect.h */,
 				40439F14151572D500B4FDAD /* nameController.h */,
 				40321A5C152EAD2D00D3F202 /* nameParticle.h */,
-				406C68091548F524008075EF /* kinectMotor.h */,
+				40F001F91582F80E0062C611 /* mysql_connector.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";
@@ -258,6 +246,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40133D24158AFCAB00A80E87 /* haarcascade_fullbody.xml */,
+				40133D25158AFCAB00A80E87 /* haarcascade_lowerbody.xml */,
+				40133D26158AFCAB00A80E87 /* haarcascade_upperbody.xml */,
+				40133D1B158AEB5200A80E87 /* SamplesConfig.xml */,
 				40572CCC154E4828009E6FB8 /* 华文黑体.ttf */,
 				407851ED154E1D3D00B526CC /* bg.mov */,
 				407851EB154E125900B526CC /* youyuan.TTF */,
@@ -279,10 +271,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		40133D1A158ADE0100A80E87 /* OpenNI */ = {
+			isa = PBXGroup;
+			children = (
+				401DE1C51512C0EE00490DE9 /* cameraKinect.h */,
+				401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */,
+			);
+			name = OpenNI;
+			sourceTree = "<group>";
+		};
 		401DDF401512B23500490DE9 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				4056A32615322D7F0060CA99 /* OpenNI */,
 				401DDF7D1512B24D00490DE9 /* Cinder-OpenCV */,
 			);
 			name = Blocks;
@@ -466,14 +466,6 @@
 			path = video;
 			sourceTree = "<group>";
 		};
-		4056A32615322D7F0060CA99 /* OpenNI */ = {
-			isa = PBXGroup;
-			children = (
-				4056A32715322D910060CA99 /* include */,
-			);
-			name = OpenNI;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -528,9 +520,12 @@
 				406F887A150DB0E500B09564 /* Hei.ttf in Resources */,
 				40AC9336151139E80099E57F /* particle.png in Resources */,
 				4056A324153228F70060CA99 /* data in Resources */,
-				4056A32815322D910060CA99 /* include in Resources */,
 				407851EE154E1D3D00B526CC /* bg.mov in Resources */,
 				40572CCD154E4828009E6FB8 /* 华文黑体.ttf in Resources */,
+				40133D1C158AEB5200A80E87 /* SamplesConfig.xml in Resources */,
+				40133D27158AFCAB00A80E87 /* haarcascade_fullbody.xml in Resources */,
+				40133D28158AFCAB00A80E87 /* haarcascade_lowerbody.xml in Resources */,
+				40133D29158AFCAB00A80E87 /* haarcascade_upperbody.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,11 +542,6 @@
 				401DDF3C1512B1DA00490DE9 /* nameController.cpp in Sources */,
 				401DDF3F1512B1EF00490DE9 /* cameraKinect.cpp in Sources */,
 				403FA021151818E100F81CE8 /* nameParticle.cpp in Sources */,
-				4056A32D15322D9F0060CA99 /* OpenNIRecorder.cpp in Sources */,
-				4056A32E15322D9F0060CA99 /* VOpenNIDevice.cpp in Sources */,
-				4056A32F15322D9F0060CA99 /* VOpenNIDeviceManager.cpp in Sources */,
-				4056A33015322D9F0060CA99 /* VOpenNIUser.cpp in Sources */,
-				406C68071548F4BF008075EF /* kinectMotor.cpp in Sources */,
 				4066FA83158246DE00CB0856 /* mysql_connector.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,29 +563,40 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
+					"\"$(OPENNI_PATH)/Include\"",
 					"\"$(CINDER_PATH)/boost\"",
-					"\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include/OpenNI\"",
+					"\"$(NITE_PATH)/include\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../blocks/Cinder-OpenCV/lib/macosx\"",
-					"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib",
 					/usr/local/mysql/lib,
 				);
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
-					"\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib/macosx/libOpenNI.dylib\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
 					"-lmysqlclient",
 					"-lm",
 					"-lz",
+					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVHandGenerator_1_5_2.dylib\"",
 				);
 				PRODUCT_NAME = earthQuakeProject;
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include \"$(CINDER_PATH)/boost\" \"$(OPENNI_PATH)/Include\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/include\"";
+				WARNING_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_video.a\"",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -616,30 +617,41 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
+					"\"$(OPENNI_PATH)/Include\"",
 					"\"$(CINDER_PATH)/boost\"",
-					"\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include/OpenNI\"",
+					"\"$(NITE_PATH)/include\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../blocks/Cinder-OpenCV/lib/macosx\"",
-					"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib",
 					/usr/local/mysql/lib,
 				);
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
-					"\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib/macosx/libOpenNI.dylib\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
 					"-lmysqlclient",
 					"-lm",
 					"-lz",
+					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVHandGenerator_1_5_2.dylib\"",
 				);
 				PRODUCT_NAME = earthQuakeProject;
 				SDKROOT = macosx10.6;
 				STRIP_INSTALLED_PRODUCT = YES;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/include\" \"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "/usr/local/include \"$(CINDER_PATH)/boost\" \"$(OPENNI_PATH)/Include\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/include\"";
+				WARNING_LDFLAGS = (
+					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_video.a\"",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -649,14 +661,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = ../..;
+				CINDER_PATH = /cinder;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				LIBRARY_SEARCH_PATHS = "$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib";
+				HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/boost\"",
+					"\"$(OPENNI_PATH)/Include\"",
+					"\"$(NITE_PATH)/include\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				NITE_PATH = "/cinder/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21";
+				OPENNI_PATH = "/cinder/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0";
 				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 			};
@@ -667,14 +686,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = ../..;
+				CINDER_PATH = /cinder;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
-				LIBRARY_SEARCH_PATHS = "$(CINDER_PATH)/blocks/chazmatazz-BlockOpenNI-d080920/lib";
+				HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/boost\"",
+					"\"$(OPENNI_PATH)/Include\"",
+					"\"$(NITE_PATH)/include\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
+				);
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				NITE_PATH = "/cinder/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21";
+				OPENNI_PATH = "/cinder/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0";
 				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 			};

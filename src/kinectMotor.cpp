@@ -25,13 +25,13 @@ bool KinectMotors::Open()
     }
     
     // Open all "Kinect motor" USB devices
-    res = xnUSBEnumerateDevices(0x045E /* VendorID */, 0x02B0 /*ProductID*/, &paths, &count);
+    res = xnUSBEnumerateDevices(0x045E /* VendorID */  , 0x02B0 /*ProductID*/, &paths, &count);
     if (res != XN_STATUS_OK)
     {
         xnPrintError(res, "xnUSBEnumerateDevices failed");
         return false;
     }
-    
+     
     // Open devices
     for (XnUInt32 index = 0; index < count; ++index)
     {
@@ -41,7 +41,7 @@ bool KinectMotors::Open()
             return false;
         }
     }
-    
+  
     m_num = count;
     XnUChar buf[1]; // output buffer
     

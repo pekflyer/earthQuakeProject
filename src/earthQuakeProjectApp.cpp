@@ -17,7 +17,7 @@
 
 #include <iostream>
 #include <boost/thread.hpp>
-#include "mysql_connector.h"
+//#include "mysql_connector.h"
 
 //#include "particleController.h"
 #include "cinder/Camera.h"
@@ -35,6 +35,8 @@ bool          videoSwitcher;
 int           counter = 0;
 float         widthName = 300;
 float         heightName = 350;
+float         mThreshold, mBlobMin, mBlobMax;
+
 
 class earthQuakeProjectApp : public AppBasic {
   public:
@@ -49,7 +51,7 @@ class earthQuakeProjectApp : public AppBasic {
     //vector<Vec2i> detectLoc(Surface* surface, Vec2i offset);
     
     //Kinect CAMERA=======================================
-    //CameraKinect        mCamera;
+    CameraKinect        *mCamera;
     //KinectMotors        KM;
     int                 motorMove;
     bool                hasUser;
@@ -109,14 +111,14 @@ void earthQuakeProjectApp::prepareSettings( Settings *settings )
 void earthQuakeProjectApp::setup()
 {
     Rand::randomize();
-    mysql_connector mc;
-    mc.mysql_connect();
+    //mysql_connector mc;
+    //mc.mysql_connect();
     //
     //boost::thread t(nameController);
     flatten         = false;
     mCentralGravity = true;
-    zoneRadiusSqrd  = 400.0f;
-	mThresh			= 1.50f;
+    zoneRadiusSqrd  = 200.0f;
+	mThresh			= 1.0f;
     hasUser         = false;
     try {
     mMovie = qtime::MovieGl(loadResource("bg.mov"));
@@ -131,10 +133,11 @@ void earthQuakeProjectApp::setup()
     mFrameTexture.reset();
     
     loadName.init();
-    //loadName.addSecParticles();
-    //if(!KM.Open())
-    //    printf("km is not working\n");
-    motorMove = -10;
+    loadName.addSecParticles();
+   // if(!KM.Open())
+     //   printf("km is not working\n");
+    mCamera = &CameraKinect::getInstance();
+    motorMove = 0;
     
     // SETUP CAMERA
 	mCameraDistance = 500.0f;
@@ -147,7 +150,7 @@ void earthQuakeProjectApp::setup()
     
 
     videoSwitcher = true;
-    //mCamera.setup();
+   // mCamera.setup();
 
    
     particleImg = new gl::Texture( loadImage( loadResource( RES_PARTICLE ) ) );
@@ -157,12 +160,15 @@ void earthQuakeProjectApp::setup()
 	mParams.addSeparator();
 	mParams.addParam( "Eye Distance", &mCameraDistance, "min=50.0 max=1500.0 step=50.0 keyIncr=s keyDecr=w" );    
     mParams.addParam( "PullToCenter", &mCentralGravity, "keyIncr=g" );
-    mParams.addParam( "Flatten", &flatten, "keyIncr=f" );
+    mParams.addParam( "Flatten", &flatten, "keyIncr=h" );
     mParams.addSeparator();
-    mParams.addParam( "Kinect", &motorMove, "min=-60, max=60, step=10, keyIncr=x keyDecr=c" );
+    mParams.addParam( "KinectTilt", &motorMove, "min=-60, max=60, step=10, keyIncr=x keyDecr=c" );
     mParams.addParam( "NameX", &widthName, "min=-500, max=800, step=25, keyIncr=v keyDecr=b" );
     mParams.addParam( "NameY", &heightName, "min=-500, max=800, step=25, keyIncr=h keyDecr=n" );
-
+    mParams.addSeparator();
+    mParams.addParam("Kinect_Threshold", &mThreshold, "min=0.0 max=255.0 step=1.0 keyIncr=u keyDecr=j");
+    mParams.addParam( "Blob Minimum Radius", &mBlobMin, "min=1.0 max=500.0 step=1.0 keyIncr=e keyDecr=d" );
+    mParams.addParam( "Blob Maximum Radius", &mBlobMax, "min=1.0 max=500.0 step=1.0 keyIncr=r keyDecr=f" );
 }
 
 void earthQuakeProjectApp::mouseDown( MouseEvent event )
@@ -175,6 +181,7 @@ void earthQuakeProjectApp::keyDown(KeyEvent event)
     if( event.getCode() == KeyEvent::KEY_ESCAPE )
 	{
         //mCamera.shutdown();
+        delete mCamera;
 		this->quit();
 		this->shutdown();
         
@@ -190,20 +197,22 @@ void earthQuakeProjectApp::update()
     if( mMovie )
 		mFrameTexture = mMovie.getTexture();
 
-    //mCamera.update();
+     mCamera->update();
     //mParticleController.applyForceToParticles( mZoneRadius, mLowerThresh, mHigherThresh, mAttractStrength, mRepelStrength, mOrientStrength);
     //mParticleController.update(flatten);
     loadName.applyForceToNames(	zoneRadiusSqrd*zoneRadiusSqrd,mThresh);
     if(mCentralGravity) loadName.pullToCenter(mCenter);
-   // if(mCamera.hasUser()) 
-   /* {
+   /* if(mCamera.hasUser()) 
+    {
         //Vec3f loc = mCamera.getUserLoc();
         if(hasUser)
         {
-            loadName.resetNameID();
-            loadName.findUserName(mCamera.getUserLoc());
+           // loadName.resetNameID();
+            //loadName.findUserName(mCamera.getUserLoc());
             hasUser = false;
             printf("HasUser\n");
+            //if(mMovie)
+            //mMovie.stop();
        }
         
        // Vec3f loc = loadName.getUserNamePos();
@@ -213,34 +222,37 @@ void earthQuakeProjectApp::update()
 
     }
     else*/
-    //{
+    {
        //mmmCamera.DeleteUser();
        loadName.update(flatten,false);
        hasUser = true;
-        loadName.resetExtraInfo();
+    loadName.resetExtraInfo();
     
 
        
     
-    //}
+    }
     mEye = Vec3f( 0.0f, 0.0f, mCameraDistance );
     mCam.lookAt( mEye, mCenter, mUp );
     gl::setMatrices( mCam );
     gl::rotate( mSceneRotation );
 
        //Move Kinect Motor=========================
-   // KM.Move(motorMove);
+  // if(mCamera.Open())
+     mCamera->Move(motorMove);
+    //KM.Move(motorMove);
    //ci::sleep(1000);
 
 }
 
 void earthQuakeProjectApp::draw()
 {
-   glClearColor( 0, 0, 0, 0 );
-    
-   glClear( GL_COLOR_BUFFER_BIT );
-   //glClear( GL_DEPTH_BUFFER_BIT );
-   gl::enableAlphaBlending();
+    glClearColor( 0, 0, 0, 0 );
+   // gl::clear( Color( 0.5f, 0.5f, 0.5f ) );
+
+     glClear( GL_COLOR_BUFFER_BIT );
+     glClear( GL_DEPTH_BUFFER_BIT );
+     gl::enableAlphaBlending();
 
 //OPENGL Draw=========================================================================
       glDepthMask( GL_FALSE );
@@ -251,24 +263,21 @@ void earthQuakeProjectApp::draw()
 //Particle System Drawing=====================================================
     //loadName.draw();
 
-    gl::color(ColorA(1,0,0,1.0f));
+    //gl::color(ColorA(1,0,0,1.0f));
     loadName.draw();
-    
+
     //Kinect SIGNAL================================================
-    /*if(mCamera.hasUser())
+   /* if(mCamera.hasUser())
     {
-        //mCamera.draw();
+        mCamera.draw();
         //gl::pushMatrices();
         gl::color(ColorA(0.5,0.5,0.7, 1.0f));
-        Vec3f loc = mCamera.getUserLoc();
-        gl::drawSphere(Vec3f(loc.x-widthName, loc.y-heightName, 400),5.0f,24);
+        //Vec3f loc = mCamera.getUserLoc();
+        //gl::drawSphere(Vec3f(loc.x-widthName, loc.y-heightName, 400),5.0f,24);
         //gl::popMatrices();
         
     }*/
 
-//params gui=================================================
-  params::InterfaceGl::draw();
-   
     gl::setMatricesWindow(getWindowSize());
     gl::color( ColorA( 1.0f, 1.0f, 1.0f, 1.0f ) );
     gl::drawString( toString((int) getAverageFps()) + " fps", Vec2f(0.0f, 52.0f));
@@ -278,8 +287,14 @@ void earthQuakeProjectApp::draw()
     //bg drawing
     if( mFrameTexture ) {
 		Rectf centeredRect = Rectf( mFrameTexture.getBounds() ).getCenteredFit( getWindowBounds(), true );
+       // gl::color( ColorA( 1.0f, 0.5f, 0.5f, 1.0f ) );
         gl::draw( mFrameTexture, Vec2f(0,0)  );
     }
+   // mCamera.draw();
+    //params gui=================================================
+    params::InterfaceGl::draw();
+    
+
 }
 
 void renderImage( Vec3f _loc, float _diam, Color _col, float _alpha )

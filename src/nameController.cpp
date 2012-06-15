@@ -25,8 +25,13 @@ nameController::nameController()
 }
 void nameController::init()
 {
-
-   nameStrings.push_back("陈思成");
+   if(mc.mysql_connect()==0)
+   {
+       nameStrings =  mc.getNameString(); 
+       extraInfoStrings = mc.getExtraString();
+   }   
+/*
+　　nameStrings.push_back("陈思成");
    nameStrings.push_back("苟玉玲");
    nameStrings.push_back("邓晨雨");
    nameStrings.push_back("黄蓉");
@@ -40,28 +45,31 @@ void nameController::init()
     extraInfoStrings.push_back("女，1992年4月30日, 16岁 - 2012年4月30日, 17岁");
     extraInfoStrings.push_back("男，1993年4月30日, 15岁 - 2012年4月30日, 19岁");
     extraInfoStrings.push_back("男，2000年4月30日, 8岁 - 2012年4月30日, 12岁");
-
+*/
     
     rand.randomize();
     //totalRandNum = (int) nameStrings.size();
     userLoc = Vec3f::zero();
     
     addNames(nameStrings);
-    mPerlin = Perlin( 4 );
+    //mPerlin = Perlin( 4 );
     nameID  = -1;
     
     flatten         = true;
     mZoneRadius		= 80.0f;
-	mLowerThresh	= 0.4f;
-	mHigherThresh	= 0.75f;
+	mLowerThresh	= 0.40f;
+	mHigherThresh	= 0.60f;
 	mAttractStrength	= 0.005f;
 	mRepelStrength		= 0.01f;
 	mOrientStrength		= 0.01f;
 
-	mMaxSpeed		= Rand::randFloat( 2.5f, 3.0f );
-	mMaxSpeedSqrd	= mMaxSpeed * mMaxSpeed;
-	mMinSpeed		= Rand::randFloat( 1.0f, 1.5f );
-	mMinSpeedSqrd	= mMinSpeed * mMinSpeed;
+	//mMaxSpeed		= 0.000000000000000001f;
+	mMaxSpeed       = 0.0f;
+    mMaxSpeedSqrd	= mMaxSpeed * mMaxSpeed;
+	//mMinSpeed		= Rand::randFloat( 0.0000000001f, 0.00000002f );
+	mMinSpeed       = 0.0f;
+    //mMinSpeed       = 0.0000000000000000000001f;
+    mMinSpeedSqrd	= mMinSpeed * mMinSpeed;
     
     mDecay			= 0.99f;
 	mRadius			= 1.0f;
@@ -88,17 +96,19 @@ void nameController::applyForceToNames( float zoneRadiusSqrd, float thresh)
 				float percent = distSqrd/zoneRadiusSqrd;
 				
 				if( percent < thresh ){			// Separation
-					float F = ( thresh/percent - 1.0f ) * 0.01f;
+					float F = ( thresh/percent - 1.0f ) * 0.1f;
 					dir.normalize();
 					dir *= F;
-                    
+                    //p1->mAcc *= 0.000001f;
+					//p2->mAcc *= 0.000001f;
+         
 					p1->mAcc += dir;
 					p2->mAcc -= dir;
 					
 				} else {						// Cohesion
 					float threshDelta = 1.0f - thresh;
 					float adjustedPercent = ( percent - thresh )/threshDelta;
-					float F = ( 1.0 - ( cos( adjustedPercent * twoPI ) * -0.5f + 0.5f ) ) * 0.05f;
+					float F = ( 1.0 - ( cos( adjustedPercent * twoPI ) * -0.5f + 0.5f ) ) * 0.5f;
 					
 					// INTERESTING BUG
 					// Use this F instead and lower the thresh to 0.2 after flattening the scene ('f' key)
@@ -106,8 +116,10 @@ void nameController::applyForceToNames( float zoneRadiusSqrd, float thresh)
                     
 					dir.normalize();
 					dir *= F;
-                    
-					p1->mAcc -= dir;
+                    //p1->mAcc *= 0.000001f;
+					//p2->mAcc *= 0.000001f;
+
+                    p1->mAcc -= dir;
 					p2->mAcc += dir;
 					
 				}

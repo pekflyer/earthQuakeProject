@@ -16,7 +16,7 @@
 #include "cinder/Perlin.h"
 
 
-
+#include "mysql_connector.h"
 #include "nameParticle.h"
 
 
@@ -74,6 +74,7 @@ class nameController
     int totalRandNum;
     Rand rand;
     int nameID;
+    mysql_connector mc;
     particleController  mParticleControllerSec;
     //    ci::Vec3f nLoc;
 //    ci::Vec3f nVel;

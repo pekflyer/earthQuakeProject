@@ -61,7 +61,7 @@ nameParticle::nameParticle(ci::Vec3f _loc, ci::Vec3f _vel, string name )
     particleAMT = (int) detectLoc(&tempSur, mPos, normal_offset).size();
     //printf("particleAMT is %d\n", particleAMT);
     if(tempSur !=  NULL){
-        mParticleController.addParticles( particleAMT);
+        //mParticleController.addParticles( particleAMT);
     }
     
     flatten         = true;
@@ -170,17 +170,18 @@ void nameParticle::update(bool flatten, bool findUser){
     }
     else
     {
-        if( flatten ) mAcc.z = 0.0f;
+        //if( flatten ) 
+            mAcc.z = 0.0f;
         mVel += mAcc;
         mVelNormal = mVel.normalized();
         
         limitSpeed();
-        
+       // cout << mVel.x << mVel.y << mVel.z <<endl;
         mPos += mVel;
         
         
-        if( flatten ) mPos.z = 0.0f;
-        
+        //if( flatten ) 
+        mPos.z = 0.0f;
         mVel *= mDecay;
         mAcc = Vec3f::zero();
 
@@ -230,10 +231,10 @@ void nameParticle::draw(){
 void nameParticle::limitSpeed(){
 	float vLengthSqrd = mVel.lengthSquared();
 	if( vLengthSqrd > mMaxSpeedSqrd ){
-		mVel = mVelNormal * mMaxSpeed;
+		mVel = mVelNormal * mMaxSpeed*0.5f;
 		
 	} else if( vLengthSqrd < mMinSpeedSqrd ){
-		mVel = mVelNormal * mMinSpeed;
+		mVel = mVelNormal * mMinSpeed*0.5f;
 	}
 }
 
@@ -241,7 +242,7 @@ void nameParticle::pullToCenter( const ci::Vec3f &center )
 {
 	Vec3f dirToCenter = mPos - center;
 	float distToCenter = dirToCenter.length();
-	float maxDistance = 100.0f;
+	float maxDistance = 80.0f;
 	
 	if( distToCenter > maxDistance ){
 		dirToCenter.normalize();
