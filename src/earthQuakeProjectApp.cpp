@@ -12,7 +12,6 @@
 #include "cinder/Text.h"
 
 #include "cameraKinect.h"
-#include "kinectMotor.h"
 #include "cinder/params/Params.h"
 
 #include <iostream>
@@ -113,6 +112,8 @@ void earthQuakeProjectApp::setup()
     Rand::randomize();
     //mysql_connector mc;
     //mc.mysql_connect();
+    cout << getAssetPath("haarcascade_fullbody.xml").string() << endl;
+
     //
     //boost::thread t(nameController);
     flatten         = false;

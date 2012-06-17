@@ -16,9 +16,6 @@
 		00BAE65A0E7ED9C10018A608 /* earthQuakeProjectApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* earthQuakeProjectApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
 		40133D1C158AEB5200A80E87 /* SamplesConfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D1B158AEB5200A80E87 /* SamplesConfig.xml */; };
-		40133D27158AFCAB00A80E87 /* haarcascade_fullbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D24158AFCAB00A80E87 /* haarcascade_fullbody.xml */; };
-		40133D28158AFCAB00A80E87 /* haarcascade_lowerbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D25158AFCAB00A80E87 /* haarcascade_lowerbody.xml */; };
-		40133D29158AFCAB00A80E87 /* haarcascade_upperbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40133D26158AFCAB00A80E87 /* haarcascade_upperbody.xml */; };
 		401DDF3C1512B1DA00490DE9 /* nameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 401DDF3B1512B1DA00490DE9 /* nameController.cpp */; };
 		401DDF3F1512B1EF00490DE9 /* cameraKinect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */; };
 		403FA021151818E100F81CE8 /* nameParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 403FA020151818E100F81CE8 /* nameParticle.cpp */; };
@@ -53,9 +50,6 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* earthQuakeProject_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = earthQuakeProject_Prefix.pch; sourceTree = "<group>"; };
 		40133D1B158AEB5200A80E87 /* SamplesConfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SamplesConfig.xml; path = ../resources/SamplesConfig.xml; sourceTree = "<group>"; };
-		40133D24158AFCAB00A80E87 /* haarcascade_fullbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_fullbody.xml; path = ../resources/haarcascade_fullbody.xml; sourceTree = "<group>"; };
-		40133D25158AFCAB00A80E87 /* haarcascade_lowerbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_lowerbody.xml; path = ../resources/haarcascade_lowerbody.xml; sourceTree = "<group>"; };
-		40133D26158AFCAB00A80E87 /* haarcascade_upperbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_upperbody.xml; path = ../resources/haarcascade_upperbody.xml; sourceTree = "<group>"; };
 		401DDF3B1512B1DA00490DE9 /* nameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nameController.cpp; path = ../src/nameController.cpp; sourceTree = "<group>"; };
 		401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cameraKinect.cpp; path = ../src/cameraKinect.cpp; sourceTree = "<group>"; };
 		401DDF9B1512B24D00490DE9 /* CinderOpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinderOpenCV.h; sourceTree = "<group>"; };
@@ -246,9 +240,6 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				40133D24158AFCAB00A80E87 /* haarcascade_fullbody.xml */,
-				40133D25158AFCAB00A80E87 /* haarcascade_lowerbody.xml */,
-				40133D26158AFCAB00A80E87 /* haarcascade_upperbody.xml */,
 				40133D1B158AEB5200A80E87 /* SamplesConfig.xml */,
 				40572CCC154E4828009E6FB8 /* 华文黑体.ttf */,
 				407851ED154E1D3D00B526CC /* bg.mov */,
@@ -523,9 +514,6 @@
 				407851EE154E1D3D00B526CC /* bg.mov in Resources */,
 				40572CCD154E4828009E6FB8 /* 华文黑体.ttf in Resources */,
 				40133D1C158AEB5200A80E87 /* SamplesConfig.xml in Resources */,
-				40133D27158AFCAB00A80E87 /* haarcascade_fullbody.xml in Resources */,
-				40133D28158AFCAB00A80E87 /* haarcascade_lowerbody.xml in Resources */,
-				40133D29158AFCAB00A80E87 /* haarcascade_upperbody.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +565,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
 					"-lmysqlclient",
@@ -631,6 +620,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
 					"-lmysqlclient",
@@ -663,7 +653,7 @@
 				ARCHS = i386;
 				CINDER_PATH = /cinder;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -688,7 +678,7 @@
 				ARCHS = i386;
 				CINDER_PATH = /cinder;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (

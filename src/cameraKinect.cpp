@@ -22,11 +22,14 @@ extern float         mThreshold, mBlobMin, mBlobMax;
 
 CameraKinect::CameraKinect()
 {
+    
+    
+    
     g_pTexMap = NULL;
     g_nTexMapX = 0;
     g_nTexMapY = 0;
     g_nViewState = DISPLAY_MODE_DEPTH;
-    g_SessionState = NOT_IN_SESSION;
+    //g_SessionState = NOT_IN_SESSION;
     Open();
 	XnStatus rc = XN_STATUS_OK;
 	EnumerationErrors errors;
@@ -76,7 +79,8 @@ CameraKinect::CameraKinect()
     
     //glDisable(GL_DEPTH_TEST);
 	//glEnable(GL_TEXTURE_2D);
-
+   // mBodyCascade.load(getAssetPath( "haarcascade_fullbody.xml" ).string());
+   // cout << getAssetPath( "haarcascade_fullbody.xml" ).string() << endl;
 
 }
 bool CameraKinect::Open()
@@ -133,7 +137,7 @@ bool CameraKinect::Open()
     }
     
     m_isOpen = true;
-
+    return true;
 }
 void CameraKinect::updateDepthTexture() 
 {
@@ -242,6 +246,34 @@ void CameraKinect::updateVideoTexture()
     
     //mVideoTexture = gl::Texture( getColorImage( g_imageMD.GetData() ) );
 }
+
+void CameraKinect::updateBodies(Surface16u bodyImage)
+{
+    const int calcScale = 2; // calculate the image at half scale
+	
+	// create a grayscale copy of the input image
+	cv::Mat grayCameraImage( toOcv( bodyImage, CV_8UC1 ) );
+	
+	// scale it to half size, as dictated by the calcScale constant
+	int scaledWidth = bodyImage.getWidth() / calcScale;
+	int scaledHeight = bodyImage.getHeight() / calcScale; 
+	cv::Mat smallImg( scaledHeight, scaledWidth, CV_8UC1 );
+	cv::resize( grayCameraImage, smallImg, smallImg.size(), 0, 0, cv::INTER_LINEAR );
+	
+	// equalize the histogram
+	cv::equalizeHist( smallImg, smallImg );
+    
+    mBodies.clear();
+    vector<cv::Rect> bodies;
+	mBodyCascade.detectMultiScale( smallImg, bodies );
+	for( vector<cv::Rect>::const_iterator bodyIter = bodies.begin(); bodyIter != bodies.end(); ++bodyIter ) {
+		Rectf bodyRect( fromOcv( *bodyIter ) );
+		bodyRect *= calcScale;
+		mBodies.push_back( bodyRect );
+    }
+
+}
+
 void CameraKinect::update() 
 {
 	//XnStatus nRetVal = context.WaitAnyUpdateAll();
@@ -249,6 +281,7 @@ void CameraKinect::update()
 	//g_pSessionManager->Update(&context);
     
     g_DepthGenerator.GetMetaData(g_depthMD);
+    updateBodies(getDepthImage());
 	//g_ImageGenerator.GetMetaData(g_imageMD);
 }
 
@@ -284,7 +317,10 @@ ImageSourceRef CameraKinect::getDepthSource( uint16_t* pData )
 
 void CameraKinect::draw()
 {
-    gl::draw(gl::Texture(getDepthImage()));  
+    // draw the faces as transparent yellow rectangles
+	gl::color( ColorA( 1, 1, 0, 0.45f ) );
+	for( vector<Rectf>::const_iterator bodyIter = mBodies.begin(); bodyIter != mBodies.end(); ++bodyIter )
+		gl::drawSolidRect( *bodyIter );
 }
 
 
@@ -399,7 +435,7 @@ void CameraKinect::update()
         mCvTexture = gl::Texture( fromOcv( output ) );
     }
 
-    /*
+    
 	// Uses manager to handle users.
 	if( _manager->hasUsers() && _manager->hasUser(1) ) 
     {

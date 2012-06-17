@@ -38,6 +38,7 @@ return (rc);                            \
 }
 
 #define SAMPLE_XML_CONFIG_PATH "SamplesConfig.xml"
+#define SAMPLE_BODY_HAAR_PATH "haarcascade_fullbody.xml"
 
 #define DISPLAY_MODE_OVERLAY	1
 #define DISPLAY_MODE_DEPTH		2
@@ -58,7 +59,7 @@ typedef enum
 	QUICK_REFOCUS
 } SessionState;
 
-static SessionState g_SessionState;
+//static SessionState g_SessionState;
 
 
 class ImageSourceKinectColor : public ImageSource 
@@ -130,7 +131,7 @@ protected:
 
 
 
-class CameraKinect
+class CameraKinect :  public AppBasic
 {
 public:
     static const int WIDTH = 1280;
@@ -155,10 +156,14 @@ public:
     bool    Move(int angle);
     bool    Open();
     void    Close();
+    void    updateBodies(Surface16u bodyImage);
+    
     enum { MaxDevs = 16 };
     Surface8u getVideoImage();
     Surface16u getDepthImage();
-
+    cv::CascadeClassifier           mBodyCascade;
+    vector<Rectf>                   mBodies;
+    
     // OpenNI objects
     Context context;
     DepthGenerator g_DepthGenerator;
