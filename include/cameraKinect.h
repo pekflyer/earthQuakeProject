@@ -28,14 +28,17 @@ printf("%s failed: %s\n", what, xnGetStatusString(rc));     \
 
 
 
-#define CHECK_ERRORS(rc, errors, what)		\
-if (rc == XN_STATUS_NO_NODE_PRESENT)        \
+#define CHECK_ERRORS(rc, errors, what)      \
 {                                           \
-XnChar strError[1024];                  \
-errors.ToString(strError, 1024);        \
-printf("%s\n", strError);               \
-return (rc);                            \
-}
+    if (rc == XN_STATUS_NO_NODE_PRESENT)        \
+    {                                           \
+        XnChar strError[1024];                  \
+        errors.ToString(strError, 1024);        \
+        printf("%s\n", strError);               \
+        return (rc);                            \
+    }                                       \
+        CHECK_RC(rc, what)                  \
+}                                       \    
 
 #define SAMPLE_XML_CONFIG_PATH "SamplesConfig.xml"
 #define SAMPLE_BODY_HAAR_PATH "haarcascade_fullbody.xml"
@@ -43,6 +46,7 @@ return (rc);                            \
 #define DISPLAY_MODE_OVERLAY	1
 #define DISPLAY_MODE_DEPTH		2
 #define DISPLAY_MODE_IMAGE		3
+#define DEFAULT_DISPLAY_MODE	DISPLAY_MODE_DEPTH
 
 #define MAX_DEPTH 10000
 using namespace ci;
@@ -154,29 +158,54 @@ public:
     void    updateVideoTexture();
     void    updateDepthTexture();
     bool    Move(int angle);
+    void    CleanupExit();
     bool    Open();
     void    Close();
-    void    updateBodies(Surface16u bodyImage);
-    
+    void    updateBodies();
+
+
+
     enum { MaxDevs = 16 };
     Surface8u getVideoImage();
     Surface16u getDepthImage();
     cv::CascadeClassifier           mBodyCascade;
     vector<Rectf>                   mBodies;
+    gl::Texture                     mDepthTexture;
     
+    
+    //---------------------------------------------------------------------------
+    // Globals
+    //---------------------------------------------------------------------------
+    float* g_pDepthHist;
+    XnRGB24Pixel* g_pTexMap;
+    unsigned int g_nTexMapX;
+    unsigned int g_nTexMapY;
+    XnDepthPixel g_nZRes;
+    
+    unsigned int g_nViewState;
+    
+
+    
+    //////////////////////////////////////////////////---------------------------------
     // OpenNI objects
-    Context context;
-    DepthGenerator g_DepthGenerator;
-    ImageGenerator g_ImageGenerator; //!!
+    Context g_context;
+    ScriptNode g_scriptNode;
+    DepthGenerator g_depth;
+    ImageGenerator g_image;
+    UserGenerator g_UserGenerator;
     DepthMetaData g_depthMD;
     ImageMetaData g_imageMD;
+    
+   // XnBool g_bNeedPose;
+    XnChar g_strPose[20];
+/*
     
     float g_pDepthHist[MAX_DEPTH];
     XnRGB24Pixel* g_pTexMap;
     
     unsigned int g_nTexMapX;
     unsigned int g_nTexMapY;
-    unsigned int g_nViewState;
+    unsigned int g_nViewState;*/
     static CameraKinect& getInstance()
     {
         // The only instance

@@ -27,6 +27,8 @@
 		4086114115124529005955DD /* particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4086113F15124529005955DD /* particle.cpp */; };
 		4086114215124529005955DD /* particleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4086114015124529005955DD /* particleController.cpp */; };
 		40AC9336151139E80099E57F /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 40AC9335151139E80099E57F /* particle.png */; };
+		40BA113015A74FE90034F68D /* UserTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 40BA112F15A74FE90034F68D /* UserTracker.cpp */; };
+		40C5A33A158E522600100230 /* haarcascade_fullbody.xml in Resources */ = {isa = PBXBuildFile; fileRef = 40C5A339158E522600100230 /* haarcascade_fullbody.xml */; };
 		40F001FA158308480062C611 /* libmysql.16.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F001F71582F6560062C611 /* libmysql.16.0.0.dylib */; };
 		40F001FD158308680062C611 /* libmysqlcppconn.5.1.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F001FB158308480062C611 /* libmysqlcppconn.5.1.1.0.dylib */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
@@ -126,6 +128,9 @@
 		408611441512453A005955DD /* particleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = particleController.h; path = ../include/particleController.h; sourceTree = "<group>"; };
 		408611461512453A005955DD /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
 		40AC9335151139E80099E57F /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = particle.png; path = ../resources/particle.png; sourceTree = "<group>"; };
+		40BA112E15A74FC10034F68D /* UserTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserTracker.h; path = ../include/UserTracker.h; sourceTree = "<group>"; };
+		40BA112F15A74FE90034F68D /* UserTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UserTracker.cpp; path = ../src/UserTracker.cpp; sourceTree = "<group>"; };
+		40C5A339158E522600100230 /* haarcascade_fullbody.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_fullbody.xml; path = ../resources/haarcascade_fullbody.xml; sourceTree = "<group>"; };
 		40F001F71582F6560062C611 /* libmysql.16.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmysql.16.0.0.dylib; path = /usr/local/lib/libmysql.16.0.0.dylib; sourceTree = "<absolute>"; };
 		40F001F91582F80E0062C611 /* mysql_connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mysql_connector.h; path = ../include/mysql_connector.h; sourceTree = "<group>"; };
 		40F001FB158308480062C611 /* libmysqlcppconn.5.1.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmysqlcppconn.5.1.1.0.dylib; path = /usr/local/lib/libmysqlcppconn.5.1.1.0.dylib; sourceTree = "<absolute>"; };
@@ -240,6 +245,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40C5A339158E522600100230 /* haarcascade_fullbody.xml */,
 				40133D1B158AEB5200A80E87 /* SamplesConfig.xml */,
 				40572CCC154E4828009E6FB8 /* 华文黑体.ttf */,
 				407851ED154E1D3D00B526CC /* bg.mov */,
@@ -267,6 +273,8 @@
 			children = (
 				401DE1C51512C0EE00490DE9 /* cameraKinect.h */,
 				401DDF3E1512B1EF00490DE9 /* cameraKinect.cpp */,
+				40BA112E15A74FC10034F68D /* UserTracker.h */,
+				40BA112F15A74FE90034F68D /* UserTracker.cpp */,
 			);
 			name = OpenNI;
 			sourceTree = "<group>";
@@ -514,6 +522,7 @@
 				407851EE154E1D3D00B526CC /* bg.mov in Resources */,
 				40572CCD154E4828009E6FB8 /* 华文黑体.ttf in Resources */,
 				40133D1C158AEB5200A80E87 /* SamplesConfig.xml in Resources */,
+				40C5A33A158E522600100230 /* haarcascade_fullbody.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +540,7 @@
 				401DDF3F1512B1EF00490DE9 /* cameraKinect.cpp in Sources */,
 				403FA021151818E100F81CE8 /* nameParticle.cpp in Sources */,
 				4066FA83158246DE00CB0856 /* mysql_connector.cpp in Sources */,
+				40BA113015A74FE90034F68D /* UserTracker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +550,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = ../..;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -548,21 +559,38 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = earthQuakeProject_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/include\"",
 					/usr/local/include,
 					"\"$(OPENNI_PATH)/Include\"",
 					"\"$(CINDER_PATH)/boost\"",
 					"\"$(NITE_PATH)/include\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
 				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "\"$(CINDER_PATH)/lib/libcinder_d.a\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\" -lmysqlclient -lm -lz \"$(OPENNI_PATH)/Lib/libOpenNI.dylib\" \"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"";
 				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
+					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
+					"-lmysqlclient",
+					"-lm",
+					"-lz",
+					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
+				);
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(OPENNI_PATH)/Lib\"",
 					"$(inherited)",
 					"\"$(SRCROOT)/../../blocks/Cinder-OpenCV/lib/macosx\"",
 					/usr/local/mysql/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				NITE_PATH = "\"$(CINDER_PATH)/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21\"";
+				OPENNI_PATH = "\"$(CINDER_PATH)/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0\"";
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
@@ -573,18 +601,21 @@
 					"-lz",
 					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
 					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
-					"\"$(NITE_PATH)/bin/libXnVHandGenerator_1_5_2.dylib\"",
 				);
 				PRODUCT_NAME = earthQuakeProject;
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "/usr/local/include \"$(CINDER_PATH)/boost\" \"$(OPENNI_PATH)/Include\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" /usr/local/include \"$(OPENNI_PATH)/Include\" \"$(CINDER_PATH)/boost\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 				WARNING_LDFLAGS = (
-					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/lib/libcinder.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
+					"-lmysqlclient",
+					"-lm",
+					"-lz",
 					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
 					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
-					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
-					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
-					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_video.a\"",
+					"\"$(NITE_PATH)/bin/libXnVHandGenerator_1_5_2.dylib\"",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -593,6 +624,7 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CINDER_PATH = ../..;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_FAST_MATH = YES;
@@ -603,23 +635,40 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = earthQuakeProject_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
+					"\"$(CINDER_PATH)/include\"",
 					/usr/local/include,
 					"\"$(OPENNI_PATH)/Include\"",
 					"\"$(CINDER_PATH)/boost\"",
 					"\"$(NITE_PATH)/include\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
 				);
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "\"$(CINDER_PATH)/lib/libcinder_d.a\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\" -lmysqlclient -lm -lz \"$(OPENNI_PATH)/Lib/libOpenNI.dylib\" \"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"";
 				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = (
+					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
+					"-lmysqlclient",
+					"-lm",
+					"-lz",
+					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
+					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
+				);
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
+					"\"$(OPENNI_PATH)/Lib\"",
 					"$(inherited)",
 					"\"$(SRCROOT)/../../blocks/Cinder-OpenCV/lib/macosx\"",
 					/usr/local/mysql/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				NITE_PATH = "\"$(CINDER_PATH)/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21\"";
+				OPENNI_PATH = "\"$(CINDER_PATH)/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0\"";
 				OTHER_LDFLAGS = (
-					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/lib/libcinder.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
@@ -633,14 +682,18 @@
 				PRODUCT_NAME = earthQuakeProject;
 				SDKROOT = macosx10.6;
 				STRIP_INSTALLED_PRODUCT = YES;
-				USER_HEADER_SEARCH_PATHS = "/usr/local/include \"$(CINDER_PATH)/boost\" \"$(OPENNI_PATH)/Include\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" /usr/local/include \"$(OPENNI_PATH)/Include\" \"$(CINDER_PATH)/boost\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
 				WARNING_LDFLAGS = (
-					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
+					"\"$(CINDER_PATH)/lib/libcinder.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_objdetect.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
+					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
+					"-lmysqlclient",
+					"-lm",
+					"-lz",
 					"\"$(OPENNI_PATH)/Lib/libOpenNI.dylib\"",
 					"\"$(NITE_PATH)/bin/libXnVNite_1_5_2.dylib\"",
-					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_imgproc.a\"",
-					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_core.a\"",
-					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/lib/macosx/libopencv_video.a\"",
+					"\"$(NITE_PATH)/bin/libXnVHandGenerator_1_5_2.dylib\"",
 				);
 				WRAPPER_EXTENSION = app;
 			};
@@ -651,9 +704,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = /cinder;
+				CINDER_PATH = ../..;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -661,13 +714,14 @@
 					"\"$(OPENNI_PATH)/Include\"",
 					"\"$(NITE_PATH)/include\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
+					"\"$(CINDER_PATH)/include\"",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				NITE_PATH = "/cinder/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21";
-				OPENNI_PATH = "/cinder/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				NITE_PATH = "\"$(CINDER_PATH)/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21\"";
+				OPENNI_PATH = "\"$(CINDER_PATH)/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0\"";
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\" \"$(OPENNI_PATH)/Include\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Debug;
 		};
@@ -676,9 +730,9 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = /cinder;
+				CINDER_PATH = ../..;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -686,13 +740,14 @@
 					"\"$(OPENNI_PATH)/Include\"",
 					"\"$(NITE_PATH)/include\"",
 					"\"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"",
+					"\"$(CINDER_PATH)/include\"",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				NITE_PATH = "/cinder/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21";
-				OPENNI_PATH = "/cinder/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				NITE_PATH = "\"$(CINDER_PATH)/misc_src/NITE-Bin-Dev-MacOSX-v1.5.2.21\"";
+				OPENNI_PATH = "\"$(CINDER_PATH)/misc_src/OpenNI-Bin-Dev-MacOSX-v1.5.4.0\"";
 				SDKROOT = macosx10.6;
-				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/include\" ../include \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\"";
+				USER_HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\" \"$(OPENNI_PATH)/Include\" \"$(NITE_PATH)/include\" \"$(CINDER_PATH)/blocks/Cinder-OpenCV/include\" \"$(CINDER_PATH)/include\" ../include";
 			};
 			name = Release;
 		};

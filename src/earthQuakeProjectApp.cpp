@@ -11,7 +11,9 @@
 #include "cinder/Perlin.h"
 #include "cinder/Text.h"
 
-#include "cameraKinect.h"
+//#include "cameraKinect.h"
+#include "UserTracker.h"
+
 #include "cinder/params/Params.h"
 
 #include <iostream>
@@ -35,7 +37,7 @@ int           counter = 0;
 float         widthName = 300;
 float         heightName = 350;
 float         mThreshold, mBlobMin, mBlobMax;
-
+vector<UserPoint> UserTracker::userPoints;
 
 class earthQuakeProjectApp : public AppBasic {
   public:
@@ -50,7 +52,7 @@ class earthQuakeProjectApp : public AppBasic {
     //vector<Vec2i> detectLoc(Surface* surface, Vec2i offset);
     
     //Kinect CAMERA=======================================
-    CameraKinect        *mCamera;
+    UserTracker         *mCamera;
     //KinectMotors        KM;
     int                 motorMove;
     bool                hasUser;
@@ -60,20 +62,7 @@ class earthQuakeProjectApp : public AppBasic {
 	Vec3f				mEye, mCenter, mUp;
 	float				mCameraDistance;
     
-    //FONT
 
-    //Shape2d    mShape;
-    //Vec2i      fontLoc;
-    //vector<Vec2i> tttlLoc;
-    //vector<vector<Vec2i> > totalLocs;
-    
-    //Surface    mSurface;
-    //gl::Texture mSimpleTexture;
-    //particles
-   
-    //particleController mParticles;
-    //Vec2i         mouseLoc;
-    //vector<Vec2i> ttl;
     //Perlin sPerlin;
     nameController      loadName;
     
@@ -92,8 +81,9 @@ class earthQuakeProjectApp : public AppBasic {
     //PARAMS
     params::InterfaceGl mParams;
     
+    gl::Texture         tempTexture;
+   // cv::CascadeClassifier           mBodyCascade;
 
-   
     
 };
 
@@ -109,13 +99,10 @@ void earthQuakeProjectApp::prepareSettings( Settings *settings )
 }
 void earthQuakeProjectApp::setup()
 {
+
     Rand::randomize();
     //mysql_connector mc;
     //mc.mysql_connect();
-    cout << getAssetPath("haarcascade_fullbody.xml").string() << endl;
-
-    //
-    //boost::thread t(nameController);
     flatten         = false;
     mCentralGravity = true;
     zoneRadiusSqrd  = 200.0f;
@@ -133,11 +120,11 @@ void earthQuakeProjectApp::setup()
 	}
     mFrameTexture.reset();
     
-    loadName.init();
-    loadName.addSecParticles();
+   // loadName.init();
+   // loadName.addSecParticles();
    // if(!KM.Open())
      //   printf("km is not working\n");
-    mCamera = &CameraKinect::getInstance();
+    mCamera = &UserTracker::getInstance();
     motorMove = 0;
     
     // SETUP CAMERA
@@ -148,13 +135,9 @@ void earthQuakeProjectApp::setup()
 	mUp				= Vec3f::yAxis();
     mCam = CameraPersp( getWindowWidth(), getWindowHeight(), 75.0f );
 	mCam.setPerspective( 75.0f, getWindowAspectRatio(), 50.0f, 2000.0f );
-    
+      
 
-    videoSwitcher = true;
-   // mCamera.setup();
-
-   
-    particleImg = new gl::Texture( loadImage( loadResource( RES_PARTICLE ) ) );
+  //  particleImg = new gl::Texture( loadImage( loadResource( RES_PARTICLE ) ) );
     mParams = params::InterfaceGl( "Flocking", Vec2i( 200, 240 ) );
     
 	mParams.addParam( "Scene Rotation", &mSceneRotation, "opened=1" );
@@ -182,7 +165,8 @@ void earthQuakeProjectApp::keyDown(KeyEvent event)
     if( event.getCode() == KeyEvent::KEY_ESCAPE )
 	{
         //mCamera.shutdown();
-        delete mCamera;
+        //mCamera->CleanupExit();
+       //delete mCamera;
 		this->quit();
 		this->shutdown();
         
@@ -195,13 +179,13 @@ void earthQuakeProjectApp::keyDown(KeyEvent event)
 
 void earthQuakeProjectApp::update()
 {
-    if( mMovie )
+  if( mMovie )
 		mFrameTexture = mMovie.getTexture();
 
-     mCamera->update();
+ 
     //mParticleController.applyForceToParticles( mZoneRadius, mLowerThresh, mHigherThresh, mAttractStrength, mRepelStrength, mOrientStrength);
     //mParticleController.update(flatten);
-    loadName.applyForceToNames(	zoneRadiusSqrd*zoneRadiusSqrd,mThresh);
+    //loadName.applyForceToNames(	zoneRadiusSqrd*zoneRadiusSqrd,mThresh);
     if(mCentralGravity) loadName.pullToCenter(mCenter);
    /* if(mCamera.hasUser()) 
     {
@@ -225,11 +209,11 @@ void earthQuakeProjectApp::update()
     else*/
     {
        //mmmCamera.DeleteUser();
-       loadName.update(flatten,false);
+      // loadName.update(flatten,false);
        hasUser = true;
-    loadName.resetExtraInfo();
+    //loadName.resetExtraInfo();
     
-
+        
        
     
     }
@@ -237,24 +221,22 @@ void earthQuakeProjectApp::update()
     mCam.lookAt( mEye, mCenter, mUp );
     gl::setMatrices( mCam );
     gl::rotate( mSceneRotation );
-
        //Move Kinect Motor=========================
   // if(mCamera.Open())
-     mCamera->Move(motorMove);
+    // mCamera->Move(motorMove);
     //KM.Move(motorMove);
    //ci::sleep(1000);
-
+    mCamera->update();
 }
 
 void earthQuakeProjectApp::draw()
 {
     glClearColor( 0, 0, 0, 0 );
    // gl::clear( Color( 0.5f, 0.5f, 0.5f ) );
-
      glClear( GL_COLOR_BUFFER_BIT );
      glClear( GL_DEPTH_BUFFER_BIT );
      gl::enableAlphaBlending();
-
+   
 //OPENGL Draw=========================================================================
       glDepthMask( GL_FALSE );
 	  glDisable( GL_DEPTH_TEST );
@@ -265,8 +247,8 @@ void earthQuakeProjectApp::draw()
     //loadName.draw();
 
     //gl::color(ColorA(1,0,0,1.0f));
-    loadName.draw();
-
+   // loadName.draw();
+  
     //Kinect SIGNAL================================================
    /* if(mCamera.hasUser())
     {
@@ -278,24 +260,25 @@ void earthQuakeProjectApp::draw()
         //gl::popMatrices();
         
     }*/
-
-    gl::setMatricesWindow(getWindowSize());
-    gl::color( ColorA( 1.0f, 1.0f, 1.0f, 1.0f ) );
-    gl::drawString( toString((int) getAverageFps()) + " fps", Vec2f(0.0f, 52.0f));
-
-
+    gl::color( ColorA( 1.0f, 1.0f, 0.5f, 1.0f ) );
+     mCamera->draw();
 
     //bg drawing
     if( mFrameTexture ) {
 		Rectf centeredRect = Rectf( mFrameTexture.getBounds() ).getCenteredFit( getWindowBounds(), true );
-       // gl::color( ColorA( 1.0f, 0.5f, 0.5f, 1.0f ) );
-        gl::draw( mFrameTexture, Vec2f(0,0)  );
+        gl::color( ColorA( 1.0f, 0.5f, 0.5f, 1.0f ) );
+        gl::draw( mFrameTexture, Vec2f(-720,-380)  );
     }
-   // mCamera.draw();
+   // mCamera->draw();
+
     //params gui=================================================
     params::InterfaceGl::draw();
     
-
+    gl::setMatricesWindow(getWindowSize());
+    gl::color( ColorA( 1.0f, 1.0f, 1.0f, 1.0f ) );
+    gl::drawString( toString((int) getAverageFps()) + " fps", Vec2f(0.0f, 52.0f));
+  
+    
 }
 
 void renderImage( Vec3f _loc, float _diam, Color _col, float _alpha )

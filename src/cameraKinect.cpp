@@ -29,29 +29,31 @@ CameraKinect::CameraKinect()
     g_nTexMapX = 0;
     g_nTexMapY = 0;
     g_nViewState = DISPLAY_MODE_DEPTH;
+    //g_bNeedPose = FALSE;
+   //  g_strPose[20];
     //g_SessionState = NOT_IN_SESSION;
     Open();
 	XnStatus rc = XN_STATUS_OK;
 	EnumerationErrors errors;
     
 	// Initialize OpenNI
-	rc = context.InitFromXmlFile(SAMPLE_XML_CONFIG_PATH, &errors);
+	rc = g_context.InitFromXmlFile(SAMPLE_XML_CONFIG_PATH, &errors);
 	CHECK_RC(rc, "InitFromXmlFile");
     
     XnStatus nRetVal = XN_STATUS_OK;
     //Make it start generating data
-    nRetVal = context.StartGeneratingAll();
+    nRetVal = g_context.StartGeneratingAll();
     CHECK_RC(nRetVal, "Start Generating All Data");
 
     
     
     ////// Getting Image and Depth data ///////////////////////////////////////////
-    rc = context.FindExistingNode(XN_NODE_TYPE_DEPTH, g_DepthGenerator);
+    rc = g_context.FindExistingNode(XN_NODE_TYPE_DEPTH, g_depth);
 	CHECK_RC(rc, "Find depth generator");
-    rc = context.FindExistingNode(XN_NODE_TYPE_IMAGE, g_ImageGenerator);
+    rc = g_context.FindExistingNode(XN_NODE_TYPE_IMAGE, g_image);
 	CHECK_RC(rc, "Find image generator");
-    g_DepthGenerator.GetMetaData(g_depthMD);
-	g_ImageGenerator.GetMetaData(g_imageMD);
+    g_depth.GetMetaData(g_depthMD);
+	g_image.GetMetaData(g_imageMD);
     
     
     
@@ -77,10 +79,17 @@ CameraKinect::CameraKinect()
 	g_nTexMapY = (((unsigned short)(g_depthMD.FullYRes()-1) / 512) + 1) * 512;
 	g_pTexMap = (XnRGB24Pixel*)malloc(g_nTexMapX * g_nTexMapY * sizeof(XnRGB24Pixel));
     
+    
+    g_nZRes = g_depthMD.ZRes();
+	g_pDepthHist = (float*)malloc(g_nZRes * sizeof(float));
     //glDisable(GL_DEPTH_TEST);
 	//glEnable(GL_TEXTURE_2D);
-   // mBodyCascade.load(getAssetPath( "haarcascade_fullbody.xml" ).string());
-   // cout << getAssetPath( "haarcascade_fullbody.xml" ).string() << endl;
+   // addAssetDirectory("../../../assets/"); 
+    //mBodyCascade.load(getAssetPath("haarcascade_eye.xml").string());
+    //cout << getAssetPath( "haarcascade_eye.xml" ) << endl;
+    
+    mBodyCascade.load(getResourcePath("haarcascade_fullbody.xml").string());
+   // cout << getResourcePath("haarcascade_fullbody.xml").string() << endl;
 
 }
 bool CameraKinect::Open()
@@ -247,12 +256,13 @@ void CameraKinect::updateVideoTexture()
     //mVideoTexture = gl::Texture( getColorImage( g_imageMD.GetData() ) );
 }
 
-void CameraKinect::updateBodies(Surface16u bodyImage)
+void CameraKinect::updateBodies()
 {
     const int calcScale = 2; // calculate the image at half scale
-	
+	Surface16u bodyImage = getDepthImage();
 	// create a grayscale copy of the input image
-	cv::Mat grayCameraImage( toOcv( bodyImage, CV_8UC1 ) );
+    Surface16u image = bodyImage;
+	cv::Mat grayCameraImage( toOcv( image, CV_8UC1 ) );
 	
 	// scale it to half size, as dictated by the calcScale constant
 	int scaledWidth = bodyImage.getWidth() / calcScale;
@@ -271,17 +281,20 @@ void CameraKinect::updateBodies(Surface16u bodyImage)
 		bodyRect *= calcScale;
 		mBodies.push_back( bodyRect );
     }
+    
+    
 
 }
 
 void CameraKinect::update() 
 {
-	//XnStatus nRetVal = context.WaitAnyUpdateAll();
-    //CHECK_RC(nRetVal, "Wait and Update"); //!!here is where to check for errors
-	//g_pSessionManager->Update(&context);
+	XnStatus nRetVal = g_context.WaitAnyUpdateAll();
+    CHECK_RC(nRetVal, "Wait and Update"); //!!here is where to check for errors
+	//g_pSessionManager->Update(&g_context);
     
-    g_DepthGenerator.GetMetaData(g_depthMD);
-    updateBodies(getDepthImage());
+    g_depth.GetMetaData(g_depthMD);
+   // Surface16u bodyImage = getDepthImage();
+    updateBodies();
 	//g_ImageGenerator.GetMetaData(g_imageMD);
 }
 
@@ -317,6 +330,7 @@ ImageSourceRef CameraKinect::getDepthSource( uint16_t* pData )
 
 void CameraKinect::draw()
 {
+    gl::draw(gl::Texture(getDepthImage()));
     // draw the faces as transparent yellow rectangles
 	gl::color( ColorA( 1, 1, 0, 0.45f ) );
 	for( vector<Rectf>::const_iterator bodyIter = mBodies.begin(); bodyIter != mBodies.end(); ++bodyIter )
@@ -351,6 +365,22 @@ void CameraKinect::Close()
         m_isOpen = false;
     }
 }
+
+void CameraKinect::CleanupExit()
+{
+    g_scriptNode.Release();
+    g_depth.Release();
+    g_UserGenerator.Release();
+    g_context.Release();
+    exit (1);
+}
+
+// Callback: New user was detected
+
+
+
+
+
 /*
 
 void CameraKinect::setup()

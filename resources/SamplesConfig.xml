@@ -22,34 +22,18 @@
 		<GlobalMirror on="true"/>
 		
 		<!-- Create a depth node and give it a name alias (useful if referenced ahead in this script) -->
-		<Node type="Depth" name="MyDepth">
-			<Query>
-				<!-- Uncomment to filter by vendor name, product name, etc.
-				<Vendor>MyVendor inc.</Vendor>
-				<Name>MyProduct</Name>
-				<MinVersion>1.2.3.4</MinVersion>
-				<Capabilities>
-					<Capability>Cropping</Capability>
-				</Capabilities>
-				-->
-			</Query>
-			<Configuration>
-				<!-- Uncomment to set requested mode
-				<MapOutputMode xRes="640" yRes="480" FPS="30"/> 
-				-->
+		<Node type="Depth" name="MyDepth" />
 
-				<!-- Uncomment to override global mirror
-				<Mirror on="false" /> 
-				-->
-			</Configuration>
-		</Node>
+	
 		
 		<!-- Create an image node. If it fails, continue anyway. -->
 		<Node type="Image" stopOnError="false" />
-
+		<Node type="User" />
+        <Node type="Hands" />
+		<Node type="Gesture" />
+        <Node type="Scene" />
 		<!-- Uncomment nodes from here if you need them.
 		<Node type="Audio" />
-		<Node type="User" />
 		<Node type="Hands" />
 		<Node type="Gesture" />
 		<Node type="Scene" />
